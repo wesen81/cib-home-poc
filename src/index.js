@@ -3,11 +3,45 @@ const GRID_SIZE = 9;
 class SudokuGame {
     constructor() {
         this.board = Array(GRID_SIZE).fill().map(() => Array(GRID_SIZE).fill(0));
+        this.playerName = '';
         this.initializeGame();
     }
 
     initializeGame() {
-        // Kezdő Sudoku tábla létrehozása
+        this.showPlayerNameInput();
+    }
+
+    showPlayerNameInput() {
+        const root = document.getElementById('root');
+        root.innerHTML = '';
+        
+        const container = document.createElement('div');
+        container.className = 'player-input-container';
+        
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.placeholder = 'Add meg a neved';
+        nameInput.className = 'player-name-input';
+        
+        const startButton = document.createElement('button');
+        startButton.textContent = 'Játék indítása';
+        startButton.className = 'start-button';
+        
+        startButton.addEventListener('click', () => {
+            if (nameInput.value.trim()) {
+                this.playerName = nameInput.value.trim();
+                this.startGame();
+            } else {
+                alert('Kérlek add meg a neved!');
+            }
+        });
+        
+        container.appendChild(nameInput);
+        container.appendChild(startButton);
+        root.appendChild(container);
+    }
+
+    startGame() {
         this.generateBoard();
         this.renderBoard();
         this.addEventListeners();
@@ -35,6 +69,11 @@ class SudokuGame {
         
         const container = document.createElement('div');
         container.className = 'sudoku-container';
+        
+        const playerInfo = document.createElement('div');
+        playerInfo.className = 'player-info';
+        playerInfo.textContent = `Játékos: ${this.playerName}`;
+        container.appendChild(playerInfo);
         
         const board = document.createElement('div');
         board.className = 'sudoku-board';
@@ -151,6 +190,43 @@ const styles = `
     input::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
+    }
+
+    .player-input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin: 20px;
+    }
+
+    .player-name-input {
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 200px;
+    }
+
+    .start-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .start-button:hover {
+        background-color: #45a049;
+    }
+
+    .player-info {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #333;
+        font-weight: bold;
     }
 `;
 
