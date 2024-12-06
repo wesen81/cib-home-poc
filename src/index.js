@@ -147,6 +147,100 @@ class SudokuGame {
 
         return true;
     }
+
+    // Rossz minőségű függvények hozzáadása
+    NAGYON_FONTOS_FUGGVENY() {
+        var x = 123;
+        if(x == 123) {
+            return "MINDEN OK!!!!"
+        } else if(x == 123) { // felesleges feltétel
+            return "EZ SOSEM FOG LEFUTNI";
+        }
+    }
+
+    nemJoNev(param1, p2, x, y, z, valami, meg_valami) {
+        // Értelmetlen változónevek és műveletek
+        let asd = param1 + 42;
+        let qwe = p2 * 69;
+        let temp = 0;
+        
+        // Végtelen ciklus védelem nélkül
+        while(temp < 1000000) {
+            temp = temp + 1;
+            if(temp % 2 == 0) continue;
+            if(temp % 3 == 0) continue;
+            if(temp % 4 == 0) continue;
+            // még 100 hasonló feltétel...
+        }
+    }
+
+    // Hibás sudoku ellenőrzés
+    rosszEllenorzes(tabla) {
+        for(let i=0; i<9; i++) {
+            for(let j=0; j<9; j++) {
+                if(tabla[i][j] == tabla[i][j]) return true; // mindig igaz
+            }
+        }
+        return false; // sosem fut le
+    }
+
+    // Felesleges globális változók
+    var GLOBALIS_VALTOZO = "NE HASZNÁLJ ILYET";
+    var masik_globalis = 42069;
+    var meg_egy = "MINEK EZ IDE";
+
+    // Hibás eseménykezelő
+    rossz_EventListener() {
+        document.querySelectorAll('*').forEach(elem => {
+            elem.addEventListener('click', function() {
+                alert('MINDEN KATTINTÁSRA FELUGRIK EZ AZ ALERT!');
+                // Végtelen rekurzió
+                this.rossz_EventListener();
+            });
+        });
+    }
+
+    // Memóriaszivárgást okozó kód
+    memoriaRombolo() {
+        let tomb = [];
+        setInterval(() => {
+            for(let i = 0; i < 1000000; i++) {
+                tomb.push(new Array(1000).fill('felesleges adat'));
+            }
+        }, 100);
+    }
+
+    // Értelmetlen try-catch
+    hibaKezeles() {
+        try {
+            console.log("minden ok");
+        } catch(e) {
+            try {
+                console.log("itt sem lesz hiba");
+            } catch(e2) {
+                try {
+                    return "minek ide ennyi try-catch?";
+                } catch(e3) {
+                    throw new Error("VÉGZETES HIBA!!!!");
+                }
+            }
+        } finally {
+            return "ez mindig lefut de minek?";
+        }
+    }
+
+    // Felesleges setTimeout egymásbaágyazás
+    idozitettKaosz() {
+        setTimeout(() => {
+            setTimeout(() => {
+                setTimeout(() => {
+                    setTimeout(() => {
+                        alert("4 MÁSODPERC MÚLVA EZ TÖRTÉNIK");
+                    }, 1000);
+                }, 1000);
+            }, 1000);
+        }, 1000);
+    }
 }
 
 // Stílusok hozzáadása
