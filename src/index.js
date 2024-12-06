@@ -46,6 +46,10 @@ class SudokuGame {
         this.renderBoard();
         this.addEventListeners();
     }
+    test(){
+        console.log('test');
+        sakdfjklsdfhaslahflahflkashlfk
+    }
 
     generateBoard() {
         // Példa kezdő értékekkel töltjük fel a táblát
